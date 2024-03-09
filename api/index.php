@@ -32,7 +32,7 @@ if($_SERVER["REQUEST_METHOD"] == "OPTIONS")
         header("Access-Control-Allow-Headers: {$_SERVER['HTTP_ACCESS_CONTROL_REQUEST_HEADERS']}");
     exit(0);
 }
-if(isset($_POST['submit'])){
+// if(isset($_POST['submit'])){
     $delete = "DELETE FROM `draw`";
     $stmt = $connect->prepare($delete);
     if ($stmt->execute()) {
@@ -54,7 +54,7 @@ if(isset($_POST['submit'])){
         echo "Error inserting data: " . $stmt->error;
     }
     $stmt->close();
-}
+// }
 // $image = new Imagick('image/output.jpg');
 if ($query_draw->num_rows > 0) {
     while ($drawR = mysqli_fetch_assoc($query_draw)){
