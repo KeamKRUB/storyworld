@@ -32,7 +32,6 @@ if($_SERVER["REQUEST_METHOD"] == "OPTIONS")
         header("Access-Control-Allow-Headers: {$_SERVER['HTTP_ACCESS_CONTROL_REQUEST_HEADERS']}");
     exit(0);
 }
-// if(isset($_POST['submit'])){
     $delete = "DELETE FROM `draw`";
     $stmt = $connect->prepare($delete);
     if ($stmt->execute()) {
@@ -41,19 +40,28 @@ if($_SERVER["REQUEST_METHOD"] == "OPTIONS")
         echo "error delete data" . $stmt->error;
     }
     $stmt->close();
-    $save = "INSERT INTO `draw` (`ip`, `vector`, `width`, `color`) VALUES (?, ?, ?, ?)";
-    $stmt = $connect->prepare($save);
-    $stmt->bind_param("ssis", $ip, $vector, $width, $color);
-    $ip = "sddsds";
-    $vector = $_POST['vector'];
-    $width = $_POST['width'];
-    $color = $_POST['color'];
-    if ($stmt->execute()) {
-        echo "Data inserted successfully.";
-    } else {
-        echo "Error inserting data: " . $stmt->error;
-    }
-    $stmt->close();
+// if(isset($_POST['submit'])){
+//     $delete = "DELETE FROM `draw`";
+//     $stmt = $connect->prepare($delete);
+//     if ($stmt->execute()) {
+//         echo "data deleted successfully";
+//     } else {
+//         echo "error delete data" . $stmt->error;
+//     }
+//     $stmt->close();
+//     $save = "INSERT INTO `draw` (`ip`, `vector`, `width`, `color`) VALUES (?, ?, ?, ?)";
+//     $stmt = $connect->prepare($save);
+//     $stmt->bind_param("ssis", $ip, $vector, $width, $color);
+//     $ip = "sddsds";
+//     $vector = $_POST['vector'];
+//     $width = $_POST['width'];
+//     $color = $_POST['color'];
+//     if ($stmt->execute()) {
+//         echo "Data inserted successfully.";
+//     } else {
+//         echo "Error inserting data: " . $stmt->error;
+//     }
+//     $stmt->close();
 // }
 // $image = new Imagick('image/output.jpg');
 if ($query_draw->num_rows > 0) {
